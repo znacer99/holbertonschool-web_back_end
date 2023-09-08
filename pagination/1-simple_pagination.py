@@ -1,30 +1,27 @@
 #!/usr/bin/env python3
-
-"""
-find the correct pages to paginate the dataset
+"""Find the correct pages to paginate the dataset
 """
 import csv
 import math
 from typing import List, Tuple
 
+
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
-    """
-    Return a tuple containing the start and end indexes
+    """Return a tuple containing the start and end indexes
     """
     return (page * page_size - page_size, page * page_size)
 
+
 class Server:
+    """Server class to paginate a database of popular baby names.
     """
-    Server class to paginate a database of popular baby names.
-    """
-    DATA_FILE = "popular_Baby_Names.csv"
+    DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
         self.__dataset = None
 
     def dataset(self) -> List[List]:
-        """
-        Cached dataset
+        """Cached dataset
         """
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
@@ -33,12 +30,11 @@ class Server:
             self.__dataset = dataset[1:]
 
         return self.__dataset
-    
+
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        """
-        find the correct pages to paginate the dataset
+        """Find the correct pages to paginate the dataset
         """
         assert type(page) == int and type(page_size) == int
         assert page > 0 and page_size > 0
         start, end = index_range(page, page_size)
-        return self.__dataset()[start:end]
+        return self.dataset()[start:end]

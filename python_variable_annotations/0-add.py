@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+creating an annotaed function.
+"""
+
 
 def add(a: float, b: float) -> float:
     """

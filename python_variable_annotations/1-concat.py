@@ -4,7 +4,7 @@ a type-annotated function concat
 """
 
 
-def concat(str1: str, str2: str) -> str :
+def concat(str1: str, str2: str) -> str:
     """
     Concatenate two strings and return a string in result.
     """
